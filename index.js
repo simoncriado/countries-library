@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // We get all cards. These are HTML templates
       const allCards = document.getElementsByClassName('card');
 
+      // We target the search input to remove the current input when we change the continent.This to force the user to start the search again
+      searchForm.country.value = '';
+
       // If the current filter is ALL we make sure that no cards are hidden
       if (continentFilter == 'All') {
         for (i = 0; i < allCards.length; i++) {
@@ -167,7 +170,8 @@ searchForm.addEventListener('keyup', () => {
   } else {
     for (i = 0; i < allCards.length; i++) {
       if (
-        // We check if the card includes the current selected continent filter AND if the card includes the search input, if so: we show this card
+        // We check if the card includes the current selected continent filter AND if the card includes the search input, if so: we show this card.
+        // This is to avoid that we get any result for example if we are filtering for Asia and we search for Spain. No result should be shown.
         allCards[i].innerText
           .toLowerCase()
           .includes(continentFilter.toLowerCase()) &&
@@ -183,5 +187,5 @@ searchForm.addEventListener('keyup', () => {
 });
 
 // KNOWN BUG: if the user selects for example Africa and searches for Spain. No results are shown which is correct. But if having Spain in the search bar the user selects All Continents:
-// All countries are shown without taking into account what it is written in the search bar (this happens because the search bar functionallity only triggers on keyup)
+// All countries are shown without taking into account what it is written in the search bar (this happens because the search bar functionallity only triggers on keyup).
 // If then the user deletes the last letter of Spain (or initiates another search) everything will work again as expected.
