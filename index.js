@@ -10,8 +10,20 @@ const getCountries = async () => {
   const data = await response
     .json()
     .then((data) => {
+      // Sorting countries alphabetically
+      const sortedCountries = data.sort(function (a, b) {
+        const countryA = a.name.common.toUpperCase(); // ignore upper and lowercase
+        const countryB = b.name.common.toUpperCase(); // ignore upper and lowercase
+        if (countryA < countryB) {
+          return -1; //countryA comes first
+        }
+        if (countryA > countryB) {
+          return 1; // countryB comes first
+        }
+        return 0; // countries must be equal
+      });
       // Once we get the countries array, we call the updateUI function with this data
-      updateUI(data);
+      updateUI(sortedCountries);
       // Once we have data we set the loader to display NONE
       loader.classList.add("d-none");
     })
