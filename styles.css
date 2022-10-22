@@ -1,16 +1,17 @@
 body {
-    background: #eeedec;
-    letter-spacing: 0.2em;
-    font-size: 0.8em;
-  }
+  background: #eeedec;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+}
 .card {
-    max-width: 300px;
-  }
+  max-width: 300px;
+}
 img {
   min-height: 210px;
   max-height: 400px !important;
+  height: 210px;
 }
-.text{
+.text {
   text-transform: capitalize;
 }
 .hide {
@@ -29,8 +30,12 @@ img {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .flip-card {
@@ -49,6 +54,8 @@ img {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.29);
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -57,7 +64,8 @@ img {
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
